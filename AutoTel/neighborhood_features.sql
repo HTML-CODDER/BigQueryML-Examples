@@ -1,23 +1,23 @@
 WITH
   t1 AS (WITH htl_neig AS(SELECT hotels.*, neig.neighborhood_name
-                          FROM `autotel_demo.data_hotels` hotels
-                          JOIN `autotel_demo.tel_aviv_neighborhood` neig
+                          FROM `doit_intl_autotel_public.data_hotels` hotels
+                          JOIN `doit_intl_autotel_public.tel_aviv_neighborhood` neig
                           ON ST_WITHIN(ST_GeogFromText(hotels.coordinates),
                                        ST_GeogFromText(neig.area_polygon)))
          SELECT neighborhood_name, COUNT(*) total_hotels
          FROM htl_neig
          GROUP BY  1),
   t2 AS (WITH kgtn_neig AS(SELECT kinder.*, neig.neighborhood_name
-                           FROM `autotel_demo.data_kindergarten` kinder
-                           JOIN `autotel_demo.tel_aviv_neighborhood` neig
+                           FROM `doit_intl_autotel_public.data_kindergarten` kinder
+                           JOIN `doit_intl_autotel_public.tel_aviv_neighborhood` neig
                            ON ST_WITHIN(ST_GeogFromText(kinder.coordinates),
                                         ST_GeogFromText(neig.area_polygon)))
           SELECT neighborhood_name, COUNT(*) total_kingrtn
           FROM kgtn_neig
           GROUP BY 1),
   t3 AS (WITH demog_data AS(SELECT demog.*, neig.neighborhood_name
-                            FROM `autotel_demo.data_demographic` demog
-                            JOIN `autotel_demo.tel_aviv_neighborhood` neig
+                            FROM `doit_intl_autotel_public.data_demographic` demog
+                            JOIN `doit_intl_autotel_public.tel_aviv_neighborhood` neig
                             ON    ST_INTERSECTS(ST_GeogFromText(demog.polygon),
                                                 ST_GeogFromText(neig.area_polygon)))
           SELECT
@@ -40,7 +40,7 @@ SELECT
   ,total_hotels
   ,t4.neighborhood_name
   ,t4.area_polygon
-FROM `autotel_demo.tel_aviv_neighborhood` AS t4
+FROM `doit_intl_autotel_public.tel_aviv_neighborhood` AS t4
 LEFT JOIN t1
   ON t1.neighborhood_name = t4.neighborhood_name
 LEFT JOIN t2
