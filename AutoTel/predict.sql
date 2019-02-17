@@ -27,11 +27,11 @@ FROM
 
 -- v2
 SELECT
-  predicted_label predicted_label
-  ,free_cars
-  ,ABS(free_cars-predicted_label) ERR
+   predicted_label
+ , free_cars
+ , ABS(free_cars-predicted_label) ERR
  , neighborhood_name
- ,timestamp
+ , timestamp
  FROM ML.PREDICT(MODEL `doit_intl_autotel_public.free_cars_model_v2`,
 
 (SELECT
@@ -49,3 +49,4 @@ SELECT
 FROM
   `doit_intl_autotel_public.dataset_v2` as dataset
   WHERE dataset.TIMESTAMP > TIMESTAMP '2019-02-10'))
+
