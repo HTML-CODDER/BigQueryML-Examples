@@ -50,7 +50,7 @@ features.neighborhood_name =  t.neighborhood_name
       ,t.day
       ,(POW(t.hour, 0) * 3.51372145)
             + (POW(t.hour, 1) * 0.9334848046818603)
-            + (POW(t.hour, 2) * -0.5050514884432347
+            + (POW(t.hour, 2) * -0.5050514884432347)
             + (POW(t.hour, 3) *  0.10439331847433782)
             + (POW(t.hour, 4) *  -0.010744587151414934)
             + (POW(t.hour, 5) * 0.0005866948294832449)
@@ -82,3 +82,4 @@ FROM data AS t
 GROUP BY 1,2,3,4,5,6
 ORDER BY free_cars DESC) as t JOIN doit_intl_autotel_public.neighborhood_features as features ON
 features.neighborhood_name =  t.neighborhood_name
+
