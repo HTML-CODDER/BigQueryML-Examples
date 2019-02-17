@@ -1,7 +1,7 @@
 -- Version 1
 
 CREATE OR REPLACE MODEL
-  `autotel_demo.free_cars_model` --model save path
+  `doit_intl_autotel_public.free_cars_model_v1` --model save path
 OPTIONS
   ( model_type='linear_reg', -- As of Nov 2018 you can choose between linear regression and logistic regression
     ls_init_learn_rate=.015,
@@ -27,13 +27,13 @@ SELECT
     ,total_hotels
     ,hour
 FROM
-  `autotel_demo.autotel_dataset_v1` as dataset
-  WHERE dataset.TIMESTAMP < TIMESTAMP '2018-11-11' -- splitting by year ensures that we don't leak test data to training set
+  `doit_intl_autotel_public.dataset_v1` as dataset
+  WHERE dataset.TIMESTAMP < TIMESTAMP '2019-02-10'
 
 
 -- Version 2
 CREATE OR REPLACE MODEL
-  `autotel_demo.free_cars_model_v2` --model save path
+  `doit_intl_autotel_public.free_cars_model_v2` --model save path
 OPTIONS
   ( model_type='linear_reg', -- As of Aug 2018 you can choose between linear regression and logistic regression
     data_split_method='seq',
@@ -54,4 +54,4 @@ SELECT
     , hour
     , is_workday
 FROM
-  `autotel_demo.autotel_dataset_v2` as dataset
+  `doit_intl_autotel_public.dataset_v2` as dataset
