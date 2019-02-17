@@ -27,7 +27,7 @@ FROM
 
 -- v2
 SELECT
-  EXP(predicted_label) - 1 predicted_label
+  predicted_label predicted_label
   ,free_cars
   ,ABS(free_cars-predicted_label) ERR
  , neighborhood_name
