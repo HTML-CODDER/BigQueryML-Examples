@@ -48,14 +48,14 @@ features.neighborhood_name =  t.neighborhood_name
       ,t.year
       ,t.month
       ,t.day
-      ,(POW(t.hour, 0) * 3.676)
-            + (POW(t.hour, 1) * -0.07694247469680397)
-            + (POW(t.hour, 2) * 0.1435622153947894)
-            + (POW(t.hour, 3) * -0.04846806856580721)
-            + (POW(t.hour, 4) *  0.00663549708662955)
-            + (POW(t.hour, 5) * -0.0004410047486667748)
-            + (POW(t.hour, 6) * 1.4172471036096757e-05)
-            + (POW(t.hour, 7) * -1.7651328628658057e-07)  hour
+      ,(POW(t.hour, 0) * 3.51372145)
+            + (POW(t.hour, 1) * 0.9334848046818603)
+            + (POW(t.hour, 2) * -0.5050514884432347
+            + (POW(t.hour, 3) *  0.10439331847433782)
+            + (POW(t.hour, 4) *  -0.010744587151414934)
+            + (POW(t.hour, 5) * 0.0005866948294832449)
+            + (POW(t.hour, 6) * -1.6285161651040377e-05)
+            + (POW(t.hour, 7) * 1.8130323231551894e-07)  hour
       ,t.minute
       ,CASE 
             WHEN (EXTRACT (DAYOFWEEK FROM t.timestamp) IN (5,6)) THEN 0
